@@ -1,35 +1,35 @@
-package Services;
+package services;
 
-import Entity.Client;
-import Utils.HibernateUtil;
+import entity.Planet;
+import utils.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-public class ClientCrudService {
-    public void create(String name) {
-        Client client = new Client();
-        client.setName(name);
+public class PlanetCrudService {
+    public void createPlanet(String id, String name) {
+        Planet planet = new Planet();
+        planet.setName(name);
+        planet.setId(id);
 
         try (Session session = HibernateUtil.getInstance().getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
-            session.persist(client);
+            session.persist(planet);
             transaction.commit();
         }
     }
 
-    public String getById(int id) {
+    public Planet getPlanetById(String id) {
         try (Session session = HibernateUtil.getInstance().getSessionFactory().openSession()) {
-            Client foundClient = session.get(Client.class, id);
-            return foundClient.getName();
+            return session.get(Planet.class, id);
         }
     }
 
-    public void updateById(int id, String name) {
+    public void updatePlanetById(String id, String name) {
         try (Session session = HibernateUtil.getInstance().getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
-            Client client = session.get(Client.class, id);
-            client.setName(name);
-            session.merge(client);
+            Planet planet = session.get(Planet.class, id);
+            planet.setName(name);
+            session.merge(planet);
             transaction.commit();
         }
     }
@@ -37,8 +37,8 @@ public class ClientCrudService {
     public void deleteById(int id) {
         try (Session session = HibernateUtil.getInstance().getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
-            Client client = session.get(Client.class, id);
-            session.remove(client);
+            Planet planet = session.get(Planet.class, id);
+            session.remove(planet);
             transaction.commit();
         }
     }

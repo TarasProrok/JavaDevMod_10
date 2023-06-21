@@ -1,6 +1,6 @@
-import Services.ClientCrudService;
-import Services.FlywayMigrationService;
-import Services.PlanetCrudService;
+import services.ClientCrudService;
+import services.FlywayMigrationService;
+import services.PlanetCrudService;
 
 public class HibernateDemoApplication {
     public static void main(String[] args) {

@@ -1,7 +1,7 @@
-package Utils;
+package utils;
 
-import Entity.Client;
-import Entity.Planet;
+import entity.Client;
+import entity.Planet;
 import lombok.Data;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
